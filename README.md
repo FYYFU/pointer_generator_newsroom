@@ -1,0 +1,1 @@
+对pointer generator进行修改，去掉了reward learning部分，并且将数据集转换为newsroom数据集。
