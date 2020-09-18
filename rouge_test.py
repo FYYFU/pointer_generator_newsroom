@@ -26,6 +26,7 @@ import matplotlib.pyplot as plt
 import re
 import logging as log
 from prettytable import PrettyTable
+import argparse
 
 log.basicConfig(level=log.INFO)
 
@@ -96,12 +97,14 @@ def plot_result_table(domain_scores):
                                    range(len(domain_scores[key]))])
     return table
 
-def main():
-    eval_result_path = '/home/yuf/pointer_generator/saved_model/0140000tar_eval.txt'
-
-    domain_scores = plot_domain_test_result(eval_result_path)
+def main(data_path):
+    domain_scores = plot_domain_test_result(data_path)
     table = plot_result_table(domain_scores)
     print(table)
 
 if __name__ == '__main__':
-    main()
+    arg = argparse.ArgumentParser()
+    arg.add_argument('--data-path', type=str, default=None)
+    arg = arg.parse_args()
+
+    main(arg.data_path)
